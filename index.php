@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#search").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $.ajax({
+            type: "POST",
+            url: "search.php",
+            data: { searchValue: value },
+            success: function(data) {
+              $("#results").html(data);
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="search" placeholder="Search..">
+    <br><br>
+    <div id="results"></div>
+  </body>
+</html>
